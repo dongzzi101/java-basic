@@ -219,6 +219,58 @@
 - **import static**: 가능
 - **main() 메서드**: 정적 메서드로, `static`만 호출 가능
 
+---
+## 섹션 9. Final
+
+### final 변수와 상수
+- `final` 키워드를 사용하면 **변수의 값을 변경할 수 없음**
+- **초기화 방법**
+  - **생성자**: 객체 생성 시 한 번만 초기화 가능
+  - **필드**: 모든 인스턴스가 같은 값을 공유 → **메모리 낭비 발생**
+    - 해결 방법: `static final` 사용
+
+### static final
+- **`static` + `final` 조합**
+- **공통적인 값**을 효율적으로 저장하고 재사용
+- 중복 선언 방지 & **메모리 사용 최적화**
+
+```java
+public class Example {
+    static final double PI = 3.14159;  // 모든 인스턴스가 동일한 값을 공유
+}
+```
+
+#### 상수 (`constant`)
+- 변하지 않고 **항상 일정한 값**을 가지는 변수
+- `static final`을 사용하여 선언
+
+```java
+public static final int MAX_VALUE = 100;
+```
+
+---
+
+### final 변수와 참조 
+
+#### final의 역할
+- `final`은 **변수의 값을 변경하지 못하게 제한**
+- 하지만 참조형 변수의 경우 **참조값 변경만 제한**, 내부 값은 변경 가능
+
+#### 기본형 vs 참조형 변수
+| 변수 유형 | `final` 적용 시 변경 가능 여부 |
+|-----------|----------------|
+| **기본형 변수** | 값 자체 변경 불가 |
+| **참조형 변수** | 참조값 변경 불가, 객체 내부 값은 변경 가능 |
+
+```java
+final int number = 10;
+number = 20;  // 오류! 값 변경 불가
+
+final Person person = new Person();
+person = new Person();  // 오류! 참조값 변경 불가
+person.setName("John");  // 가능! 객체 내부 값 변경 가능
+```
+
 
 
 
